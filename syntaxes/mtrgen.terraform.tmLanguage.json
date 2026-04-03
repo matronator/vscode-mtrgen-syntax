@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MTRGen (Terraform)",
+  "scopeName": "source.mtrgen.terraform",
+  "patterns": [
+    {
+      "include": "source.mtrgen"
+    },
+    {
+      "include": "source.hcl.terraform"
+    }
+  ]
+}

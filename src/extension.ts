@@ -1,68 +1,22 @@
 import * as vscode from "vscode";
 
-import {
-    DEFAULT_LANGUAGE_ID,
-    FALLBACK_LANGUAGE_SPECS,
-    createLanguageRegistry,
-    detectLanguageId,
-    type LanguageContribution,
-    type LanguageRegistry,
-} from "./language-detection";
+import { looksLikeMtrText } from "./language-detection";
 import { TOKEN_TYPE_INDEX, TOKEN_TYPES, tokenizeMtrText, type TokenType } from "./semantic-tokens";
 
-type TimeoutHandle = ReturnType<typeof setTimeout>;
-
-function isMtrDocument(document: vscode.TextDocument | undefined): document is vscode.TextDocument {
+function isFileDocument(document: vscode.TextDocument | undefined): document is vscode.TextDocument {
     if (!document) {
         return false;
     }
 
-    if (document.uri.scheme !== "file") {
+    return document.uri.scheme === "file";
+}
+
+function shouldManageDocument(document: vscode.TextDocument | undefined): boolean {
+    if (!isFileDocument(document)) {
         return false;
     }
 
-    return document.fileName.toLowerCase().endsWith(".mtr");
-}
-
-function isLanguageContribution(value: unknown): value is LanguageContribution {
-    if (typeof value !== "object" || value === null) {
-        return false;
-    }
-
-    const candidate = value as LanguageContribution;
-    return typeof candidate.id === "string" || typeof candidate.languageId === "string";
-}
-
-function collectInstalledLanguageSpecs(): LanguageContribution[] {
-    const languageSpecs: LanguageContribution[] = [];
-
-    for (const extension of vscode.extensions.all) {
-        const packageJson = extension.packageJSON as
-            | {
-                  contributes?: {
-                      languages?: unknown;
-                  };
-              }
-            | undefined;
-        const contributedLanguages = packageJson?.contributes?.languages;
-        if (!Array.isArray(contributedLanguages)) {
-            continue;
-        }
-
-        for (const contribution of contributedLanguages) {
-            if (!isLanguageContribution(contribution)) {
-                continue;
-            }
-
-            languageSpecs.push(contribution);
-        }
-    }
-
-    return languageSpecs;
-}
-
-function createRuntimeLanguageRegistry(): LanguageRegistry {
-    return createLanguageRegistry([...FALLBACK_LANGUAGE_SPECS, ...collectInstalledLanguageSpecs()]);
+    return document.fileName.toLowerCase().endsWith(".mtr") || looksLikeMtrText(document.getText());
 }
 
 function createSemanticLegend(): vscode.SemanticTokensLegend {
@@ -94,99 +48,72 @@ function createSemanticTokens(document: vscode.TextDocument): vscode.SemanticTok
     return builder.build();
 }
 
-async function syncDocumentLanguage(
-    document: vscode.TextDocument,
-    languageRegistry: LanguageRegistry,
-): Promise<void> {
-    if (!isMtrDocument(document)) {
-        return;
-    }
-
-    const desiredLanguageId = detectLanguageId(document.fileName, document.getText(), languageRegistry);
-    const currentLanguageId = document.languageId || DEFAULT_LANGUAGE_ID;
-    if (currentLanguageId === desiredLanguageId) {
-        return;
-    }
-
-    try {
-        await vscode.languages.setTextDocumentLanguage(document, desiredLanguageId);
-    } catch (error: unknown) {
-        console.error("[mtrgen-vscode] Failed to set language mode:", error);
-    }
-}
-
 export function activate(context: vscode.ExtensionContext): void {
     const semanticLegend = createSemanticLegend();
-    const languageRegistry = createRuntimeLanguageRegistry();
-    const pendingUpdates = new Map<string, TimeoutHandle>();
+    const managedDocuments = new Set<string>();
 
-    function scheduleSync(document: vscode.TextDocument, delay = 150): void {
-        if (!isMtrDocument(document)) {
+    function updateManagedDocument(document: vscode.TextDocument): void {
+        if (!isFileDocument(document)) {
             return;
         }
 
         const key = document.uri.toString();
-        const existing = pendingUpdates.get(key);
-        if (existing) {
-            clearTimeout(existing);
+        if (shouldManageDocument(document)) {
+            managedDocuments.add(key);
+            return;
         }
 
-        const timeout = setTimeout(() => {
-            pendingUpdates.delete(key);
-            void syncDocumentLanguage(document, languageRegistry);
-        }, delay);
-
-        pendingUpdates.set(key, timeout);
+        managedDocuments.delete(key);
     }
 
-    async function syncOpenDocuments(): Promise<void> {
+    function refreshOpenDocuments(): void {
         for (const document of vscode.workspace.textDocuments) {
-            await syncDocumentLanguage(document, languageRegistry);
+            updateManagedDocument(document);
         }
     }
 
     context.subscriptions.push(
         vscode.languages.registerDocumentSemanticTokensProvider(
-            [
-                { language: DEFAULT_LANGUAGE_ID },
-                { scheme: "file", pattern: "**/*.mtr" },
-            ],
+            [{ scheme: "file" }],
             {
                 provideDocumentSemanticTokens(document) {
+                    if (!managedDocuments.has(document.uri.toString()) && !shouldManageDocument(document)) {
+                        return null;
+                    }
+
                     return createSemanticTokens(document);
                 },
             },
             semanticLegend,
         ),
         vscode.workspace.onDidOpenTextDocument((document) => {
-            scheduleSync(document, 0);
+            updateManagedDocument(document);
         }),
         vscode.workspace.onDidChangeTextDocument((event) => {
-            scheduleSync(event.document);
+            updateManagedDocument(event.document);
         }),
         vscode.workspace.onDidSaveTextDocument((document) => {
-            scheduleSync(document, 0);
+            updateManagedDocument(document);
         }),
         vscode.window.onDidChangeActiveTextEditor((editor) => {
             if (editor) {
-                scheduleSync(editor.document, 0);
+                updateManagedDocument(editor.document);
             }
         }),
         vscode.workspace.onDidRenameFiles(() => {
-            void syncOpenDocuments();
+            refreshOpenDocuments();
+        }),
+        vscode.workspace.onDidCloseTextDocument((document) => {
+            managedDocuments.delete(document.uri.toString());
         }),
         {
             dispose() {
-                for (const timeout of pendingUpdates.values()) {
-                    clearTimeout(timeout);
-                }
-
-                pendingUpdates.clear();
+                managedDocuments.clear();
             },
         },
     );
 
-    void syncOpenDocuments();
+    refreshOpenDocuments();
 }
 
 export function deactivate(): void {}

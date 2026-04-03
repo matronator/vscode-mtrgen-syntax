@@ -2,79 +2,79 @@
     "header": {
         "prefix": ["---", "header", "mtr"],
         "description": "MTRGen template header",
-        "scope": "mtrgen",
-        "body": ["--- MTRGEN ---", "name: ${1:name}", "filename: ${2:filename}", "path: ${3:$RELATIVE_FILEPATH}", "--- /MTRGEN ---", "$0"]
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile",
+        "body": ["--- MTRGEN ---", "name: ${1:name}", "filename: ${2:filename}", "path: ${RELATIVE_FILEPATH}", "--- /MTRGEN ---", "$0"]
     },
     "if": {
         "prefix": "if",
         "description": "If statement block",
         "body": ["<% if ${1:true} %>", "$0", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "if elseif": {
         "prefix": ["ifelseif", "ifei"],
         "description": "If statement block with elseif block",
         "body": ["<% if ${1:true} %>", "$0", "<% elseif ${2:false} %>", " ", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "if else": {
         "prefix": ["ifelse", "ife"],
         "description": "If statement block with else block",
         "body": ["<% if ${1:true} %>", "$0", "<% else %>", " ", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "if elseif else": {
         "prefix": ["ifelseifelse", "ifeie"],
         "description": "If statement block with elseif and else block",
         "body": ["<% if ${1:true} %>", "$0", "<% elseif ${2:false} %>", " ", "<% else %>", " ", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "else": {
         "prefix": "else",
         "description": "Else statement block",
         "body": ["<% else %>", "$0", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "elseif": {
         "prefix": "elseif",
         "description": "Elseif statement block",
         "body": ["<% elseif ${1:false} %>", "$0", "<% endif %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "comment": {
         "prefix": ["<#", "//"],
         "description": "Comment block",
-        "body": ["<# ${1:comment} #>"],
-        "scope": "mtrgen"
+        "body": ["<# $0 #>"],
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "for": {
         "prefix": "for",
         "description": "For loop block",
-        "body": ["<% for ${1:item} in ${2:$items} %>", "$0", "<% endfor %>"],
-        "scope": "mtrgen"
+        "body": ["<% for ${1:item} in \\$${1:item}s %>", "$0", "<% endfor %>"],
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "first": {
         "prefix": "first",
         "description": "First block",
         "body": ["<% first %>", "$0", "<% endfirst %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "last": {
         "prefix": "last",
         "description": "Last block",
         "body": ["<% last %>", "$0", "<% endlast %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "sep": {
         "prefix": "sep",
         "description": "Separator block",
         "body": ["<% sep %>", "$0", "<% endsep %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     },
     "empty": {
         "prefix": "empty",
         "description": "Empty block",
         "body": ["<% empty %>", "$0", "<% endempty %>"],
-        "scope": "mtrgen"
+        "scope": "mtrgen,mtrgen-php,mtrgen-javascript,mtrgen-javascriptreact,mtrgen-typescript,mtrgen-typescriptreact,mtrgen-json,mtrgen-jsonc,mtrgen-html,mtrgen-css,mtrgen-scss,mtrgen-less,mtrgen-markdown,mtrgen-yaml,mtrgen-python,mtrgen-shellscript,mtrgen-sql,mtrgen-java,mtrgen-csharp,mtrgen-c,mtrgen-cpp,mtrgen-go,mtrgen-zig,mtrgen-odin,mtrgen-gleam,mtrgen-kdl,mtrgen-haxe,mtrgen-elm,mtrgen-elixir,mtrgen-ruby,mtrgen-toml,mtrgen-terraform,mtrgen-kotlin,mtrgen-rust,mtrgen-solidity,mtrgen-clarity,mtrgen-xml,mtrgen-dockerfile,php,javascript,javascriptreact,typescript,typescriptreact,json,jsonc,html,css,scss,less,markdown,yaml,python,shellscript,sql,java,csharp,c,cpp,go,zig,odin,gleam,kdl,haxe,elm,elixir,ruby,toml,terraform,kotlin,rust,solidity,clarity,xml,dockerfile"
     }
 }

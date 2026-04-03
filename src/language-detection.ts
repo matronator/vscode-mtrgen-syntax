@@ -6,6 +6,13 @@ const HEADER_BLOCK_RE = /^--- MTRGEN ---\r?\n([\s\S]*?)^--- \/MTRGEN ---/m;
 const HEADER_FILENAME_RE = /^\s*filename\s*:\s*(.+?)\s*$/m;
 const TEMPLATE_TAG_RE = /<%[\s\S]*?%>/g;
 const TEMPLATE_COMMENT_RE = /<#([\s\S]*?)#>/g;
+const HEADER_MARKER_RE = /^--- MTRGEN ---\s*$/m;
+const TEMPLATE_TAG_MARKER_RE = /<%[\s\S]*?%>/;
+const TEMPLATE_COMMENT_MARKER_RE = /<#([\s\S]*?)#>/;
+const MTR_VARIABLE_RE = /\$[A-Za-z_][\w]*/;
+const FILTER_PIPE_RE = /\|\s*[A-Za-z_][\w-]*/;
+const CONTROL_TAG_RE =
+    /<%\s*(?:if|elseif|else|endif|for|endfor|first|last|sep|empty|endfirst|endlast|endsep|endempty|of)\b/;
 
 export interface LanguageContribution {
     id?: string;
@@ -37,14 +44,29 @@ export const FALLBACK_LANGUAGE_SPECS = [
     { id: "less", extensions: [".less"] },
     { id: "markdown", extensions: [".md", ".markdown"] },
     { id: "yaml", extensions: [".yaml", ".yml"] },
-    { id: "php", extensions: [".php"] },
+    { id: "php", extensions: [".php", ".phpt"] },
     { id: "python", extensions: [".py"] },
     { id: "shellscript", extensions: [".sh", ".bash", ".zsh"] },
     { id: "sql", extensions: [".sql"] },
     { id: "java", extensions: [".java"] },
     { id: "csharp", extensions: [".cs"] },
+    { id: "c", extensions: [".c", ".i"] },
+    { id: "cpp", extensions: [".cpp", ".cppm", ".cc", ".ccm", ".cxx", ".cxxm", ".hpp", ".hh", ".hxx", ".ipp", ".ixx", ".tpp", ".txx"] },
     { id: "go", extensions: [".go"] },
+    { id: "zig", extensions: [".zig"] },
+    { id: "odin", extensions: [".odin"] },
+    { id: "gleam", extensions: [".gleam"] },
+    { id: "kdl", extensions: [".kdl"] },
+    { id: "haxe", extensions: [".hx"] },
+    { id: "elm", extensions: [".elm"] },
+    { id: "elixir", extensions: [".ex", ".exs"] },
+    { id: "ruby", extensions: [".rb", ".rbx", ".rjs", ".gemspec", ".rake", ".ru", ".erb", ".podspec", ".rbi"] },
+    { id: "toml", extensions: [".toml"] },
+    { id: "terraform", extensions: [".tf", ".tfvars", ".hcl"] },
+    { id: "kotlin", extensions: [".kt", ".kts"] },
     { id: "rust", extensions: [".rs"] },
+    { id: "solidity", extensions: [".sol"] },
+    { id: "clarity", extensions: [".clar"] },
     { id: "xml", extensions: [".xml", ".svg", ".xsd", ".xsl"] },
 ] satisfies readonly LanguageContribution[];
 
@@ -188,4 +210,37 @@ export function detectLanguageId(
     }
 
     return inferLanguageId(detectHeaderFilename(text), registry);
+}
+
+export function detectDocumentLanguageId(
+    fileName: string | null | undefined,
+    text = "",
+    registry: LanguageRegistry = DEFAULT_LANGUAGE_REGISTRY,
+): string {
+    if (fileName?.toLowerCase().endsWith(".mtr")) {
+        return DEFAULT_LANGUAGE_ID;
+    }
+
+    const explicitLanguageId = inferLanguageId(fileName, registry);
+    if (explicitLanguageId !== DEFAULT_LANGUAGE_ID) {
+        return explicitLanguageId;
+    }
+
+    return detectLanguageId(fileName, text, registry);
+}
+
+export function looksLikeMtrText(text: string): boolean {
+    if (HEADER_MARKER_RE.test(text)) {
+        return true;
+    }
+
+    if (TEMPLATE_COMMENT_MARKER_RE.test(text)) {
+        return true;
+    }
+
+    if (!TEMPLATE_TAG_MARKER_RE.test(text)) {
+        return false;
+    }
+
+    return MTR_VARIABLE_RE.test(text) || FILTER_PIPE_RE.test(text) || CONTROL_TAG_RE.test(text);
 }

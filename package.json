@@ -4,7 +4,7 @@
   "description": "Adds syntax highlighting for MTRGen templates",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.110.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages", "Snippets", "Other"
@@ -12,8 +12,88 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./dist/extension.js",
+  "main": "./out/extension.js",
   "contributes": {
+    "configurationDefaults": {
+      "files.associations": {
+        "Dockerfile.mtr": "mtrgen-dockerfile",
+        "*.bash.mtr": "mtrgen-shellscript",
+        "*.c.mtr": "mtrgen-c",
+        "*.cjs.mtr": "mtrgen-javascript",
+        "*.clar.mtr": "mtrgen-clarity",
+        "*.cpp.mtr": "mtrgen-cpp",
+        "*.cppm.mtr": "mtrgen-cpp",
+        "*.cc.mtr": "mtrgen-cpp",
+        "*.ccm.mtr": "mtrgen-cpp",
+        "*.cs.mtr": "mtrgen-csharp",
+        "*.css.mtr": "mtrgen-css",
+        "*.cts.mtr": "mtrgen-typescript",
+        "*.cxx.mtr": "mtrgen-cpp",
+        "*.cxxm.mtr": "mtrgen-cpp",
+        "*.elm.mtr": "mtrgen-elm",
+        "*.erb.mtr": "mtrgen-ruby",
+        "*.ex.mtr": "mtrgen-elixir",
+        "*.exs.mtr": "mtrgen-elixir",
+        "*.gemspec.mtr": "mtrgen-ruby",
+        "*.gleam.mtr": "mtrgen-gleam",
+        "*.go.mtr": "mtrgen-go",
+        "*.hcl.mtr": "mtrgen-terraform",
+        "*.hh.mtr": "mtrgen-cpp",
+        "*.htm.mtr": "mtrgen-html",
+        "*.html.mtr": "mtrgen-html",
+        "*.hpp.mtr": "mtrgen-cpp",
+        "*.hx.mtr": "mtrgen-haxe",
+        "*.hxx.mtr": "mtrgen-cpp",
+        "*.i.mtr": "mtrgen-c",
+        "*.ipp.mtr": "mtrgen-cpp",
+        "*.ixx.mtr": "mtrgen-cpp",
+        "*.php.mtr": "mtrgen-php",
+        "*.podspec.mtr": "mtrgen-ruby",
+        "*.js.mtr": "mtrgen-javascript",
+        "*.jsx.mtr": "mtrgen-javascriptreact",
+        "*.java.mtr": "mtrgen-java",
+        "*.json.mtr": "mtrgen-json",
+        "*.jsonc.mtr": "mtrgen-jsonc",
+        "*.kdl.mtr": "mtrgen-kdl",
+        "*.kt.mtr": "mtrgen-kotlin",
+        "*.kts.mtr": "mtrgen-kotlin",
+        "*.less.mtr": "mtrgen-less",
+        "*.markdown.mtr": "mtrgen-markdown",
+        "*.mjs.mtr": "mtrgen-javascript",
+        "*.md.mtr": "mtrgen-markdown",
+        "*.mts.mtr": "mtrgen-typescript",
+        "*.odin.mtr": "mtrgen-odin",
+        "*.py.mtr": "mtrgen-python",
+        "*.rb.mtr": "mtrgen-ruby",
+        "*.rbx.mtr": "mtrgen-ruby",
+        "*.rbi.mtr": "mtrgen-ruby",
+        "*.rjs.mtr": "mtrgen-ruby",
+        "*.rake.mtr": "mtrgen-ruby",
+        "*.rs.mtr": "mtrgen-rust",
+        "*.ru.mtr": "mtrgen-ruby",
+        "*.sass.mtr": "mtrgen-scss",
+        "*.scss.mtr": "mtrgen-scss",
+        "*.sh.mtr": "mtrgen-shellscript",
+        "*.sol.mtr": "mtrgen-solidity",
+        "*.sql.mtr": "mtrgen-sql",
+        "*.svg.mtr": "mtrgen-xml",
+        "*.ts.mtr": "mtrgen-typescript",
+        "*.tsx.mtr": "mtrgen-typescriptreact",
+        "*.tf.mtr": "mtrgen-terraform",
+        "*.tfvars.mtr": "mtrgen-terraform",
+        "*.toml.mtr": "mtrgen-toml",
+        "*.tpp.mtr": "mtrgen-cpp",
+        "*.txx.mtr": "mtrgen-cpp",
+        "*.xml.mtr": "mtrgen-xml",
+        "*.xsd.mtr": "mtrgen-xml",
+        "*.xsl.mtr": "mtrgen-xml",
+        "*.yaml.mtr": "mtrgen-yaml",
+        "*.yml.mtr": "mtrgen-yaml",
+        "*.zig.mtr": "mtrgen-zig",
+        "*.zsh.mtr": "mtrgen-shellscript",
+        "*.mtr": "mtrgen"
+      }
+    },
     "languages": [
       {
         "id": "mtrgen",
@@ -23,7 +103,568 @@
         "extensions": [
           ".mtr"
         ],
-        "configuration": "./language-configuration.json"
+        "firstLine": "^--- MTRGEN ---\\s*$",
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-php",
+        "aliases": [
+          "MTRGen (PHP)"
+        ],
+        "extensions": [
+          ".php.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-javascript",
+        "aliases": [
+          "MTRGen (JavaScript)"
+        ],
+        "extensions": [
+          ".js.mtr",
+          ".mjs.mtr",
+          ".cjs.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-javascriptreact",
+        "aliases": [
+          "MTRGen (JavaScript React)"
+        ],
+        "extensions": [
+          ".jsx.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-typescript",
+        "aliases": [
+          "MTRGen (TypeScript)"
+        ],
+        "extensions": [
+          ".ts.mtr",
+          ".mts.mtr",
+          ".cts.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-typescriptreact",
+        "aliases": [
+          "MTRGen (TypeScript React)"
+        ],
+        "extensions": [
+          ".tsx.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-json",
+        "aliases": [
+          "MTRGen (JSON)"
+        ],
+        "extensions": [
+          ".json.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-jsonc",
+        "aliases": [
+          "MTRGen (JSONC)"
+        ],
+        "extensions": [
+          ".jsonc.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-html",
+        "aliases": [
+          "MTRGen (HTML)"
+        ],
+        "extensions": [
+          ".html.mtr",
+          ".htm.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-css",
+        "aliases": [
+          "MTRGen (CSS)"
+        ],
+        "extensions": [
+          ".css.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-scss",
+        "aliases": [
+          "MTRGen (SCSS)"
+        ],
+        "extensions": [
+          ".scss.mtr",
+          ".sass.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-less",
+        "aliases": [
+          "MTRGen (Less)"
+        ],
+        "extensions": [
+          ".less.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-markdown",
+        "aliases": [
+          "MTRGen (Markdown)"
+        ],
+        "extensions": [
+          ".md.mtr",
+          ".markdown.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-yaml",
+        "aliases": [
+          "MTRGen (YAML)"
+        ],
+        "extensions": [
+          ".yaml.mtr",
+          ".yml.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-python",
+        "aliases": [
+          "MTRGen (Python)"
+        ],
+        "extensions": [
+          ".py.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-shellscript",
+        "aliases": [
+          "MTRGen (Shell Script)"
+        ],
+        "extensions": [
+          ".sh.mtr",
+          ".bash.mtr",
+          ".zsh.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-sql",
+        "aliases": [
+          "MTRGen (SQL)"
+        ],
+        "extensions": [
+          ".sql.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-java",
+        "aliases": [
+          "MTRGen (Java)"
+        ],
+        "extensions": [
+          ".java.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-csharp",
+        "aliases": [
+          "MTRGen (C#)"
+        ],
+        "extensions": [
+          ".cs.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-c",
+        "aliases": [
+          "MTRGen (C)"
+        ],
+        "extensions": [
+          ".c.mtr",
+          ".i.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-cpp",
+        "aliases": [
+          "MTRGen (C++)"
+        ],
+        "extensions": [
+          ".cpp.mtr",
+          ".cppm.mtr",
+          ".cc.mtr",
+          ".ccm.mtr",
+          ".cxx.mtr",
+          ".cxxm.mtr",
+          ".hpp.mtr",
+          ".hh.mtr",
+          ".hxx.mtr",
+          ".ipp.mtr",
+          ".ixx.mtr",
+          ".tpp.mtr",
+          ".txx.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-go",
+        "aliases": [
+          "MTRGen (Go)"
+        ],
+        "extensions": [
+          ".go.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-zig",
+        "aliases": [
+          "MTRGen (Zig)"
+        ],
+        "extensions": [
+          ".zig.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-odin",
+        "aliases": [
+          "MTRGen (Odin)"
+        ],
+        "extensions": [
+          ".odin.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-gleam",
+        "aliases": [
+          "MTRGen (Gleam)"
+        ],
+        "extensions": [
+          ".gleam.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-kdl",
+        "aliases": [
+          "MTRGen (KDL)"
+        ],
+        "extensions": [
+          ".kdl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-haxe",
+        "aliases": [
+          "MTRGen (Haxe)"
+        ],
+        "extensions": [
+          ".hx.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-elm",
+        "aliases": [
+          "MTRGen (Elm)"
+        ],
+        "extensions": [
+          ".elm.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-elixir",
+        "aliases": [
+          "MTRGen (Elixir)"
+        ],
+        "extensions": [
+          ".ex.mtr",
+          ".exs.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-ruby",
+        "aliases": [
+          "MTRGen (Ruby)"
+        ],
+        "extensions": [
+          ".rb.mtr",
+          ".rbx.mtr",
+          ".rjs.mtr",
+          ".gemspec.mtr",
+          ".rake.mtr",
+          ".ru.mtr",
+          ".erb.mtr",
+          ".podspec.mtr",
+          ".rbi.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-toml",
+        "aliases": [
+          "MTRGen (TOML)"
+        ],
+        "extensions": [
+          ".toml.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-terraform",
+        "aliases": [
+          "MTRGen (Terraform)"
+        ],
+        "extensions": [
+          ".tf.mtr",
+          ".tfvars.mtr",
+          ".hcl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-kotlin",
+        "aliases": [
+          "MTRGen (Kotlin)"
+        ],
+        "extensions": [
+          ".kt.mtr",
+          ".kts.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-rust",
+        "aliases": [
+          "MTRGen (Rust)"
+        ],
+        "extensions": [
+          ".rs.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-solidity",
+        "aliases": [
+          "MTRGen (Solidity)"
+        ],
+        "extensions": [
+          ".sol.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-clarity",
+        "aliases": [
+          "MTRGen (Clarity)"
+        ],
+        "extensions": [
+          ".clar.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-xml",
+        "aliases": [
+          "MTRGen (XML)"
+        ],
+        "extensions": [
+          ".xml.mtr",
+          ".svg.mtr",
+          ".xsd.mtr",
+          ".xsl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-dockerfile",
+        "aliases": [
+          "MTRGen (Dockerfile)"
+        ],
+        "filenames": [
+          "Dockerfile.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
       }
     ],
     "grammars": [
@@ -31,6 +672,376 @@
         "language": "mtrgen",
         "scopeName": "source.mtrgen",
         "path": "./syntaxes/mtrgen.tmLanguage.json"
+      },
+      {
+        "language": "mtrgen-php",
+        "scopeName": "source.mtrgen.php",
+        "path": "./syntaxes/mtrgen.php.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.php": "php",
+          "text.html.php": "php",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-javascript",
+        "scopeName": "source.mtrgen.javascript",
+        "path": "./syntaxes/mtrgen.javascript.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.js": "javascript",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-javascriptreact",
+        "scopeName": "source.mtrgen.javascriptreact",
+        "path": "./syntaxes/mtrgen.javascriptreact.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.js.jsx": "javascriptreact",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-typescript",
+        "scopeName": "source.mtrgen.typescript",
+        "path": "./syntaxes/mtrgen.typescript.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.ts": "typescript",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-typescriptreact",
+        "scopeName": "source.mtrgen.typescriptreact",
+        "path": "./syntaxes/mtrgen.typescriptreact.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.tsx": "typescriptreact",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "scopeName": "mtrgen.injection.javascript",
+        "path": "./syntaxes/mtrgen.javascript.injection.tmLanguage.json",
+        "injectTo": [
+          "source.mtrgen.javascript"
+        ]
+      },
+      {
+        "scopeName": "mtrgen.injection.javascriptreact",
+        "path": "./syntaxes/mtrgen.javascriptreact.injection.tmLanguage.json",
+        "injectTo": [
+          "source.mtrgen.javascriptreact"
+        ]
+      },
+      {
+        "scopeName": "mtrgen.injection.typescript",
+        "path": "./syntaxes/mtrgen.typescript.injection.tmLanguage.json",
+        "injectTo": [
+          "source.mtrgen.typescript"
+        ]
+      },
+      {
+        "scopeName": "mtrgen.injection.typescriptreact",
+        "path": "./syntaxes/mtrgen.typescriptreact.injection.tmLanguage.json",
+        "injectTo": [
+          "source.mtrgen.typescriptreact"
+        ]
+      },
+      {
+        "language": "mtrgen-json",
+        "scopeName": "source.mtrgen.json",
+        "path": "./syntaxes/mtrgen.json.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.json": "json",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-jsonc",
+        "scopeName": "source.mtrgen.jsonc",
+        "path": "./syntaxes/mtrgen.jsonc.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.json.comments": "jsonc",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-html",
+        "scopeName": "source.mtrgen.html",
+        "path": "./syntaxes/mtrgen.html.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.html.basic": "html",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-css",
+        "scopeName": "source.mtrgen.css",
+        "path": "./syntaxes/mtrgen.css.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.css": "css",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-scss",
+        "scopeName": "source.mtrgen.scss",
+        "path": "./syntaxes/mtrgen.scss.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.css.scss": "scss",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-less",
+        "scopeName": "source.mtrgen.less",
+        "path": "./syntaxes/mtrgen.less.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.css.less": "less",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-markdown",
+        "scopeName": "source.mtrgen.markdown",
+        "path": "./syntaxes/mtrgen.markdown.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.html.markdown": "markdown",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-yaml",
+        "scopeName": "source.mtrgen.yaml",
+        "path": "./syntaxes/mtrgen.yaml.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.yaml": "yaml",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-python",
+        "scopeName": "source.mtrgen.python",
+        "path": "./syntaxes/mtrgen.python.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.python": "python",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-shellscript",
+        "scopeName": "source.mtrgen.shellscript",
+        "path": "./syntaxes/mtrgen.shellscript.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.shell": "shellscript",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-sql",
+        "scopeName": "source.mtrgen.sql",
+        "path": "./syntaxes/mtrgen.sql.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.sql": "sql",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-java",
+        "scopeName": "source.mtrgen.java",
+        "path": "./syntaxes/mtrgen.java.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.java": "java",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-csharp",
+        "scopeName": "source.mtrgen.csharp",
+        "path": "./syntaxes/mtrgen.csharp.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.cs": "csharp",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-c",
+        "scopeName": "source.mtrgen.c",
+        "path": "./syntaxes/mtrgen.c.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.c": "c",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-cpp",
+        "scopeName": "source.mtrgen.cpp",
+        "path": "./syntaxes/mtrgen.cpp.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.cpp": "cpp",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-go",
+        "scopeName": "source.mtrgen.go",
+        "path": "./syntaxes/mtrgen.go.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.go": "go",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-zig",
+        "scopeName": "source.mtrgen.zig",
+        "path": "./syntaxes/mtrgen.zig.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.zig": "zig",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-odin",
+        "scopeName": "source.mtrgen.odin",
+        "path": "./syntaxes/mtrgen.odin.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.odin": "odin",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-gleam",
+        "scopeName": "source.mtrgen.gleam",
+        "path": "./syntaxes/mtrgen.gleam.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.gleam": "gleam",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-kdl",
+        "scopeName": "source.mtrgen.kdl",
+        "path": "./syntaxes/mtrgen.kdl.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.kdl": "kdl",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-haxe",
+        "scopeName": "source.mtrgen.haxe",
+        "path": "./syntaxes/mtrgen.haxe.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.haxe": "haxe",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-elm",
+        "scopeName": "source.mtrgen.elm",
+        "path": "./syntaxes/mtrgen.elm.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.elm": "elm",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-elixir",
+        "scopeName": "source.mtrgen.elixir",
+        "path": "./syntaxes/mtrgen.elixir.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.elixir": "elixir",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-ruby",
+        "scopeName": "source.mtrgen.ruby",
+        "path": "./syntaxes/mtrgen.ruby.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.ruby": "ruby",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-toml",
+        "scopeName": "source.mtrgen.toml",
+        "path": "./syntaxes/mtrgen.toml.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.toml": "toml",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-terraform",
+        "scopeName": "source.mtrgen.terraform",
+        "path": "./syntaxes/mtrgen.terraform.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.hcl.terraform": "terraform",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-kotlin",
+        "scopeName": "source.mtrgen.kotlin",
+        "path": "./syntaxes/mtrgen.kotlin.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.kotlin": "kotlin",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-rust",
+        "scopeName": "source.mtrgen.rust",
+        "path": "./syntaxes/mtrgen.rust.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.rust": "rust",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-solidity",
+        "scopeName": "source.mtrgen.solidity",
+        "path": "./syntaxes/mtrgen.solidity.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.solidity": "solidity",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-clarity",
+        "scopeName": "source.mtrgen.clarity",
+        "path": "./syntaxes/mtrgen.clarity.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.clarity": "clarity",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-xml",
+        "scopeName": "source.mtrgen.xml",
+        "path": "./syntaxes/mtrgen.xml.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.xml": "xml",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-dockerfile",
+        "scopeName": "source.mtrgen.dockerfile",
+        "path": "./syntaxes/mtrgen.dockerfile.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.dockerfile": "dockerfile",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "scopeName": "mtrgen.injection.php",
+        "path": "./syntaxes/mtrgen.php.injection.tmLanguage.json",
+        "injectTo": [
+          "text.html.php",
+          "source.php"
+        ]
       }
     ],
     "snippets": [
@@ -44,19 +1055,23 @@
     "template",
     "syntax",
     "highlighting",
-    "codegen"
+    "codegen",
+    "boilerplate generator",
+    "templating",
+    "file generator",
+    "code generator",
+    "boilerplate",
+    "generator"
   ],
   "scripts": {
-    "generate:grammars": "npm run build && node ./scripts/generate-grammars.js",
+    "generate:grammars": "node ./scripts/generate-grammars.js",
     "vscode:prepublish": "pnpm run package",
-    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
-    "watch": "npm-run-all -p watch:*",
-    "watch:esbuild": "node esbuild.js --watch",
-    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile": "pnpm run check-types && pnpm run lint && tsc -p . --outDir out",
+    "watch": "tsc -p . -w --outDir out",
+    "package": "pnpm run compile",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "pretest": "pnpm run compile",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test"
@@ -67,8 +1082,6 @@
     "@types/node": "22.x",
     "typescript-eslint": "^8.56.1",
     "eslint": "^9.39.3",
-    "esbuild": "^0.20.0",
-    "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2"

@@ -178,6 +178,68 @@ function createGrammar({ name, scopeName }) {
         repository: createRepository(),
     };
 }
+const HOST_LANGUAGE_SPECS = [
+    { id: "php", displayName: "PHP", grammarScopeName: "source.mtrgen.php", hostScopeName: "text.html.php" },
+    { id: "javascript", displayName: "JavaScript", grammarScopeName: "source.mtrgen.javascript", hostScopeName: "source.js" },
+    { id: "javascriptreact", displayName: "JavaScript React", grammarScopeName: "source.mtrgen.javascriptreact", hostScopeName: "source.js.jsx" },
+    { id: "typescript", displayName: "TypeScript", grammarScopeName: "source.mtrgen.typescript", hostScopeName: "source.ts" },
+    { id: "typescriptreact", displayName: "TypeScript React", grammarScopeName: "source.mtrgen.typescriptreact", hostScopeName: "source.tsx" },
+    { id: "json", displayName: "JSON", grammarScopeName: "source.mtrgen.json", hostScopeName: "source.json" },
+    { id: "jsonc", displayName: "JSONC", grammarScopeName: "source.mtrgen.jsonc", hostScopeName: "source.json.comments" },
+    { id: "html", displayName: "HTML", grammarScopeName: "source.mtrgen.html", hostScopeName: "text.html.basic" },
+    { id: "css", displayName: "CSS", grammarScopeName: "source.mtrgen.css", hostScopeName: "source.css" },
+    { id: "scss", displayName: "SCSS", grammarScopeName: "source.mtrgen.scss", hostScopeName: "source.css.scss" },
+    { id: "less", displayName: "Less", grammarScopeName: "source.mtrgen.less", hostScopeName: "source.css.less" },
+    { id: "markdown", displayName: "Markdown", grammarScopeName: "source.mtrgen.markdown", hostScopeName: "text.html.markdown" },
+    { id: "yaml", displayName: "YAML", grammarScopeName: "source.mtrgen.yaml", hostScopeName: "source.yaml" },
+    { id: "python", displayName: "Python", grammarScopeName: "source.mtrgen.python", hostScopeName: "source.python" },
+    { id: "shellscript", displayName: "Shell Script", grammarScopeName: "source.mtrgen.shellscript", hostScopeName: "source.shell" },
+    { id: "sql", displayName: "SQL", grammarScopeName: "source.mtrgen.sql", hostScopeName: "source.sql" },
+    { id: "java", displayName: "Java", grammarScopeName: "source.mtrgen.java", hostScopeName: "source.java" },
+    { id: "csharp", displayName: "C#", grammarScopeName: "source.mtrgen.csharp", hostScopeName: "source.cs" },
+    { id: "c", displayName: "C", grammarScopeName: "source.mtrgen.c", hostScopeName: "source.c" },
+    { id: "cpp", displayName: "C++", grammarScopeName: "source.mtrgen.cpp", hostScopeName: "source.cpp" },
+    { id: "go", displayName: "Go", grammarScopeName: "source.mtrgen.go", hostScopeName: "source.go" },
+    { id: "zig", displayName: "Zig", grammarScopeName: "source.mtrgen.zig", hostScopeName: "source.zig" },
+    { id: "odin", displayName: "Odin", grammarScopeName: "source.mtrgen.odin", hostScopeName: "source.odin" },
+    { id: "gleam", displayName: "Gleam", grammarScopeName: "source.mtrgen.gleam", hostScopeName: "source.gleam" },
+    { id: "kdl", displayName: "KDL", grammarScopeName: "source.mtrgen.kdl", hostScopeName: "source.kdl" },
+    { id: "haxe", displayName: "Haxe", grammarScopeName: "source.mtrgen.haxe", hostScopeName: "source.haxe" },
+    { id: "elm", displayName: "Elm", grammarScopeName: "source.mtrgen.elm", hostScopeName: "source.elm" },
+    { id: "elixir", displayName: "Elixir", grammarScopeName: "source.mtrgen.elixir", hostScopeName: "source.elixir" },
+    { id: "ruby", displayName: "Ruby", grammarScopeName: "source.mtrgen.ruby", hostScopeName: "source.ruby" },
+    { id: "toml", displayName: "TOML", grammarScopeName: "source.mtrgen.toml", hostScopeName: "source.toml" },
+    { id: "terraform", displayName: "Terraform", grammarScopeName: "source.mtrgen.terraform", hostScopeName: "source.hcl.terraform" },
+    { id: "kotlin", displayName: "Kotlin", grammarScopeName: "source.mtrgen.kotlin", hostScopeName: "source.kotlin" },
+    { id: "rust", displayName: "Rust", grammarScopeName: "source.mtrgen.rust", hostScopeName: "source.rust" },
+    { id: "solidity", displayName: "Solidity", grammarScopeName: "source.mtrgen.solidity", hostScopeName: "source.solidity" },
+    { id: "clarity", displayName: "Clarity", grammarScopeName: "source.mtrgen.clarity", hostScopeName: "source.clarity" },
+    { id: "xml", displayName: "XML", grammarScopeName: "source.mtrgen.xml", hostScopeName: "text.xml" },
+    { id: "dockerfile", displayName: "Dockerfile", grammarScopeName: "source.mtrgen.dockerfile", hostScopeName: "source.dockerfile" },
+];
+function createHostGrammar({ name, scopeName, hostScopeName, }) {
+    const patterns = [
+        { include: "#header" },
+        { include: "#templateComment" },
+        { include: "#templateTag" },
+        { include: hostScopeName },
+    ];
+    return {
+        $schema: "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+        name,
+        scopeName,
+        patterns,
+        repository: createRepository(),
+    };
+}
+function createInjectionGrammar(scopeName, injectionSelector) {
+    return {
+        $schema: "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+        scopeName,
+        injectionSelector,
+        patterns: [{ include: "source.mtrgen" }],
+    };
+}
 function writeJson(filePath, value) {
     fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
@@ -195,3 +257,14 @@ writeJson(path.join(syntaxesDir, "mtrgen.tmLanguage.json"), createGrammar({
     name: "MTRGen",
     scopeName: "source.mtrgen",
 }));
+for (const hostLanguage of HOST_LANGUAGE_SPECS) {
+    writeJson(path.join(syntaxesDir, `mtrgen.${hostLanguage.id}.tmLanguage.json`), createHostGrammar({
+        name: `MTRGen (${hostLanguage.displayName})`,
+        scopeName: hostLanguage.grammarScopeName,
+        hostScopeName: hostLanguage.hostScopeName,
+    }));
+}
+writeJson(path.join(syntaxesDir, "mtrgen.javascript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascript", "L:source.js"));
+writeJson(path.join(syntaxesDir, "mtrgen.javascriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascriptreact", "L:source.js.jsx"));
+writeJson(path.join(syntaxesDir, "mtrgen.typescript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescript", "L:source.ts"));
+writeJson(path.join(syntaxesDir, "mtrgen.typescriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescriptreact", "L:source.tsx"));
