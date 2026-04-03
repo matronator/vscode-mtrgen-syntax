@@ -1,10 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "scopeName": "mtrgen.injection.typescript",
-  "injectionSelector": "L:source.mtrgen.typescript source.ts",
+  "name": "MTRGen (Lisp)",
+  "scopeName": "source.mtrgen.lisp",
   "patterns": [
     {
       "include": "source.mtrgen"
+    },
+    {
+      "include": "source.lisp"
     }
   ]
 }

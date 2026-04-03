@@ -16,12 +16,18 @@ const registry = createLanguageRegistry([
     { id: "clarity", extensions: [".clar"] },
     { id: "cpp", extensions: [".cpp", ".hpp"] },
     { id: "dockerfile", filenames: ["Dockerfile"] },
+    { id: "haskell", extensions: [".hs", ".lhs"] },
+    { id: "lua", extensions: [".lua"] },
     { id: "elixir", extensions: [".ex", ".exs"] },
     { id: "mdx", extensions: [".mdx"] },
+    { id: "powershell", extensions: [".ps1", ".psm1"] },
     { id: "php", extensions: [".php", ".blade.php"] },
+    { id: "scala", extensions: [".scala", ".sc"] },
     { id: "solidity", extensions: [".sol"] },
+    { id: "swift", extensions: [".swift"] },
     { id: "terraform", extensions: [".tf", ".tfvars", ".hcl"] },
     { id: "toml", extensions: [".toml"] },
+    { id: "dart", extensions: [".dart"] },
     { id: "zig", extensions: [".zig"] },
 ]);
 
@@ -30,6 +36,12 @@ test("detects the host language from the template filename", () => {
     assert.equal(detectLanguageId("/tmp/token.clar.mtr", "", registry), "clarity");
     assert.equal(detectLanguageId("/tmp/infra.tf.mtr", "", registry), "terraform");
     assert.equal(detectLanguageId("/tmp/contract.sol.mtr", "", registry), "solidity");
+    assert.equal(detectLanguageId("/tmp/tool.lua.mtr", "", registry), "lua");
+    assert.equal(detectLanguageId("/tmp/app.scala.mtr", "", registry), "scala");
+    assert.equal(detectLanguageId("/tmp/script.ps1.mtr", "", registry), "powershell");
+    assert.equal(detectLanguageId("/tmp/module.hs.mtr", "", registry), "haskell");
+    assert.equal(detectLanguageId("/tmp/app.swift.mtr", "", registry), "swift");
+    assert.equal(detectLanguageId("/tmp/app.dart.mtr", "", registry), "dart");
     assert.equal(detectLanguageId("/tmp/source.zig.mtr", "", registry), "zig");
 });
 

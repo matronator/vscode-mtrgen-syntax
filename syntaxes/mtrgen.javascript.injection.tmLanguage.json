@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "mtrgen.injection.javascript",
-  "injectionSelector": "L:source.js",
+  "injectionSelector": "L:source.mtrgen.javascript source.js",
   "patterns": [
     {
       "include": "source.mtrgen"

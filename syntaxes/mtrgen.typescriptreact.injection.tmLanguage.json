@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "mtrgen.injection.typescriptreact",
-  "injectionSelector": "L:source.tsx",
+  "injectionSelector": "L:source.mtrgen.typescriptreact source.tsx",
   "patterns": [
     {
       "include": "source.mtrgen"

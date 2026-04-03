@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "mtrgen.injection.php",
-  "injectionSelector": "L:text.html.php, L:source.php",
+  "injectionSelector": "L:source.mtrgen.php source.php, L:source.mtrgen.php text.html.php",
   "patterns": [
     {
       "include": "source.mtrgen"

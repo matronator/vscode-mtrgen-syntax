@@ -179,7 +179,7 @@ function createGrammar({ name, scopeName }) {
     };
 }
 const HOST_LANGUAGE_SPECS = [
-    { id: "php", displayName: "PHP", grammarScopeName: "source.mtrgen.php", hostScopeName: "text.html.php" },
+    { id: "php", displayName: "PHP", grammarScopeName: "source.mtrgen.php", hostScopeName: "source.php" },
     { id: "javascript", displayName: "JavaScript", grammarScopeName: "source.mtrgen.javascript", hostScopeName: "source.js" },
     { id: "javascriptreact", displayName: "JavaScript React", grammarScopeName: "source.mtrgen.javascriptreact", hostScopeName: "source.js.jsx" },
     { id: "typescript", displayName: "TypeScript", grammarScopeName: "source.mtrgen.typescript", hostScopeName: "source.ts" },
@@ -212,6 +212,19 @@ const HOST_LANGUAGE_SPECS = [
     { id: "terraform", displayName: "Terraform", grammarScopeName: "source.mtrgen.terraform", hostScopeName: "source.hcl.terraform" },
     { id: "kotlin", displayName: "Kotlin", grammarScopeName: "source.mtrgen.kotlin", hostScopeName: "source.kotlin" },
     { id: "rust", displayName: "Rust", grammarScopeName: "source.mtrgen.rust", hostScopeName: "source.rust" },
+    { id: "swift", displayName: "Swift", grammarScopeName: "source.mtrgen.swift", hostScopeName: "source.swift" },
+    { id: "dart", displayName: "Dart", grammarScopeName: "source.mtrgen.dart", hostScopeName: "source.dart" },
+    { id: "lua", displayName: "Lua", grammarScopeName: "source.mtrgen.lua", hostScopeName: "source.lua" },
+    { id: "perl", displayName: "Perl", grammarScopeName: "source.mtrgen.perl", hostScopeName: "source.perl" },
+    { id: "objective-c", displayName: "Objective-C", grammarScopeName: "source.mtrgen.objective-c", hostScopeName: "source.objc" },
+    { id: "scala", displayName: "Scala", grammarScopeName: "source.mtrgen.scala", hostScopeName: "source.scala" },
+    { id: "julia", displayName: "Julia", grammarScopeName: "source.mtrgen.julia", hostScopeName: "source.julia" },
+    { id: "haskell", displayName: "Haskell", grammarScopeName: "source.mtrgen.haskell", hostScopeName: "source.haskell" },
+    { id: "erlang", displayName: "Erlang", grammarScopeName: "source.mtrgen.erlang", hostScopeName: "source.erlang" },
+    { id: "nim", displayName: "Nim", grammarScopeName: "source.mtrgen.nim", hostScopeName: "source.nim" },
+    { id: "ocaml", displayName: "OCaml", grammarScopeName: "source.mtrgen.ocaml", hostScopeName: "source.ocaml" },
+    { id: "powershell", displayName: "PowerShell", grammarScopeName: "source.mtrgen.powershell", hostScopeName: "source.powershell" },
+    { id: "lisp", displayName: "Lisp", grammarScopeName: "source.mtrgen.lisp", hostScopeName: "source.lisp" },
     { id: "solidity", displayName: "Solidity", grammarScopeName: "source.mtrgen.solidity", hostScopeName: "source.solidity" },
     { id: "clarity", displayName: "Clarity", grammarScopeName: "source.mtrgen.clarity", hostScopeName: "source.clarity" },
     { id: "xml", displayName: "XML", grammarScopeName: "source.mtrgen.xml", hostScopeName: "text.xml" },
@@ -240,6 +253,9 @@ function createInjectionGrammar(scopeName, injectionSelector) {
         patterns: [{ include: "source.mtrgen" }],
     };
 }
+function createScopedInjectionSelector(rootScopeName, hostScopeNames) {
+    return hostScopeNames.map((hostScopeName) => `L:${rootScopeName} ${hostScopeName}`).join(", ");
+}
 function writeJson(filePath, value) {
     fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
@@ -264,7 +280,7 @@ for (const hostLanguage of HOST_LANGUAGE_SPECS) {
         hostScopeName: hostLanguage.hostScopeName,
     }));
 }
-writeJson(path.join(syntaxesDir, "mtrgen.javascript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascript", "L:source.js"));
-writeJson(path.join(syntaxesDir, "mtrgen.javascriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascriptreact", "L:source.js.jsx"));
-writeJson(path.join(syntaxesDir, "mtrgen.typescript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescript", "L:source.ts"));
-writeJson(path.join(syntaxesDir, "mtrgen.typescriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescriptreact", "L:source.tsx"));
+writeJson(path.join(syntaxesDir, "mtrgen.javascript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascript", createScopedInjectionSelector("source.mtrgen.javascript", ["source.js"])));
+writeJson(path.join(syntaxesDir, "mtrgen.javascriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.javascriptreact", createScopedInjectionSelector("source.mtrgen.javascriptreact", ["source.js.jsx"])));
+writeJson(path.join(syntaxesDir, "mtrgen.typescript.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescript", createScopedInjectionSelector("source.mtrgen.typescript", ["source.ts"])));
+writeJson(path.join(syntaxesDir, "mtrgen.typescriptreact.injection.tmLanguage.json"), createInjectionGrammar("mtrgen.injection.typescriptreact", createScopedInjectionSelector("source.mtrgen.typescriptreact", ["source.tsx"])));

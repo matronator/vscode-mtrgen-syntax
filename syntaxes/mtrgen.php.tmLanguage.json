@@ -13,7 +13,7 @@
       "include": "#templateTag"
     },
     {
-      "include": "text.html.php"
+      "include": "source.php"
     }
   ],
   "repository": {

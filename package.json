@@ -30,7 +30,9 @@
         "*.cts.mtr": "mtrgen-typescript",
         "*.cxx.mtr": "mtrgen-cpp",
         "*.cxxm.mtr": "mtrgen-cpp",
+        "*.dart.mtr": "mtrgen-dart",
         "*.elm.mtr": "mtrgen-elm",
+        "*.erl.mtr": "mtrgen-erlang",
         "*.erb.mtr": "mtrgen-ruby",
         "*.ex.mtr": "mtrgen-elixir",
         "*.exs.mtr": "mtrgen-elixir",
@@ -38,11 +40,13 @@
         "*.gleam.mtr": "mtrgen-gleam",
         "*.go.mtr": "mtrgen-go",
         "*.hcl.mtr": "mtrgen-terraform",
+        "*.hrl.mtr": "mtrgen-erlang",
         "*.hh.mtr": "mtrgen-cpp",
         "*.htm.mtr": "mtrgen-html",
         "*.html.mtr": "mtrgen-html",
         "*.hpp.mtr": "mtrgen-cpp",
         "*.hx.mtr": "mtrgen-haxe",
+        "*.hs.mtr": "mtrgen-haskell",
         "*.hxx.mtr": "mtrgen-cpp",
         "*.i.mtr": "mtrgen-c",
         "*.ipp.mtr": "mtrgen-cpp",
@@ -54,16 +58,37 @@
         "*.java.mtr": "mtrgen-java",
         "*.json.mtr": "mtrgen-json",
         "*.jsonc.mtr": "mtrgen-jsonc",
+        "*.jl.mtr": "mtrgen-julia",
         "*.kdl.mtr": "mtrgen-kdl",
         "*.kt.mtr": "mtrgen-kotlin",
         "*.kts.mtr": "mtrgen-kotlin",
         "*.less.mtr": "mtrgen-less",
+        "*.lhs.mtr": "mtrgen-haskell",
+        "*.lisp.mtr": "mtrgen-lisp",
+        "*.lsp.mtr": "mtrgen-lisp",
+        "*.lua.mtr": "mtrgen-lua",
         "*.markdown.mtr": "mtrgen-markdown",
+        "*.m.mtr": "mtrgen-objective-c",
+        "*.ml.mtr": "mtrgen-ocaml",
+        "*.mli.mtr": "mtrgen-ocaml",
+        "*.mll.mtr": "mtrgen-ocaml",
+        "*.mly.mtr": "mtrgen-ocaml",
         "*.mjs.mtr": "mtrgen-javascript",
         "*.md.mtr": "mtrgen-markdown",
         "*.mts.mtr": "mtrgen-typescript",
+        "*.nim.mtr": "mtrgen-nim",
+        "*.nimble.mtr": "mtrgen-nim",
         "*.odin.mtr": "mtrgen-odin",
+        "*.pl.mtr": "mtrgen-perl",
+        "*.pm.mtr": "mtrgen-perl",
+        "*.pod.mtr": "mtrgen-perl",
         "*.py.mtr": "mtrgen-python",
+        "*.ps1.mtr": "mtrgen-powershell",
+        "*.psd1.mtr": "mtrgen-powershell",
+        "*.psgi.mtr": "mtrgen-perl",
+        "*.psm1.mtr": "mtrgen-powershell",
+        "*.psrc.mtr": "mtrgen-powershell",
+        "*.pssc.mtr": "mtrgen-powershell",
         "*.rb.mtr": "mtrgen-ruby",
         "*.rbx.mtr": "mtrgen-ruby",
         "*.rbi.mtr": "mtrgen-ruby",
@@ -72,11 +97,15 @@
         "*.rs.mtr": "mtrgen-rust",
         "*.ru.mtr": "mtrgen-ruby",
         "*.sass.mtr": "mtrgen-scss",
+        "*.sc.mtr": "mtrgen-scala",
+        "*.scala.mtr": "mtrgen-scala",
         "*.scss.mtr": "mtrgen-scss",
         "*.sh.mtr": "mtrgen-shellscript",
         "*.sol.mtr": "mtrgen-solidity",
         "*.sql.mtr": "mtrgen-sql",
         "*.svg.mtr": "mtrgen-xml",
+        "*.swift.mtr": "mtrgen-swift",
+        "*.t.mtr": "mtrgen-perl",
         "*.ts.mtr": "mtrgen-typescript",
         "*.tsx.mtr": "mtrgen-typescriptreact",
         "*.tf.mtr": "mtrgen-terraform",
@@ -608,6 +637,205 @@
         }
       },
       {
+        "id": "mtrgen-swift",
+        "aliases": [
+          "MTRGen (Swift)"
+        ],
+        "extensions": [
+          ".swift.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-dart",
+        "aliases": [
+          "MTRGen (Dart)"
+        ],
+        "extensions": [
+          ".dart.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-lua",
+        "aliases": [
+          "MTRGen (Lua)"
+        ],
+        "extensions": [
+          ".lua.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-perl",
+        "aliases": [
+          "MTRGen (Perl)"
+        ],
+        "extensions": [
+          ".pl.mtr",
+          ".pm.mtr",
+          ".pod.mtr",
+          ".t.mtr",
+          ".psgi.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-objective-c",
+        "aliases": [
+          "MTRGen (Objective-C)"
+        ],
+        "extensions": [
+          ".m.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-scala",
+        "aliases": [
+          "MTRGen (Scala)"
+        ],
+        "extensions": [
+          ".scala.mtr",
+          ".sc.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-julia",
+        "aliases": [
+          "MTRGen (Julia)"
+        ],
+        "extensions": [
+          ".jl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-haskell",
+        "aliases": [
+          "MTRGen (Haskell)"
+        ],
+        "extensions": [
+          ".hs.mtr",
+          ".lhs.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-erlang",
+        "aliases": [
+          "MTRGen (Erlang)"
+        ],
+        "extensions": [
+          ".erl.mtr",
+          ".hrl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-nim",
+        "aliases": [
+          "MTRGen (Nim)"
+        ],
+        "extensions": [
+          ".nim.mtr",
+          ".nimble.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-ocaml",
+        "aliases": [
+          "MTRGen (OCaml)"
+        ],
+        "extensions": [
+          ".ml.mtr",
+          ".mli.mtr",
+          ".mll.mtr",
+          ".mly.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-powershell",
+        "aliases": [
+          "MTRGen (PowerShell)"
+        ],
+        "extensions": [
+          ".ps1.mtr",
+          ".psm1.mtr",
+          ".psd1.mtr",
+          ".pssc.mtr",
+          ".psrc.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
+        "id": "mtrgen-lisp",
+        "aliases": [
+          "MTRGen (Lisp)"
+        ],
+        "extensions": [
+          ".lisp.mtr",
+          ".lsp.mtr",
+          ".cl.mtr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/mtrgen-icon-light.svg",
+          "dark": "./images/mtrgen-icon-dark.svg"
+        }
+      },
+      {
         "id": "mtrgen-solidity",
         "aliases": [
           "MTRGen (Solidity)"
@@ -1000,6 +1228,123 @@
         }
       },
       {
+        "language": "mtrgen-swift",
+        "scopeName": "source.mtrgen.swift",
+        "path": "./syntaxes/mtrgen.swift.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.swift": "swift",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-dart",
+        "scopeName": "source.mtrgen.dart",
+        "path": "./syntaxes/mtrgen.dart.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.dart": "dart",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-lua",
+        "scopeName": "source.mtrgen.lua",
+        "path": "./syntaxes/mtrgen.lua.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.lua": "lua",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-perl",
+        "scopeName": "source.mtrgen.perl",
+        "path": "./syntaxes/mtrgen.perl.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.perl": "perl",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-objective-c",
+        "scopeName": "source.mtrgen.objective-c",
+        "path": "./syntaxes/mtrgen.objective-c.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.objc": "objective-c",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-scala",
+        "scopeName": "source.mtrgen.scala",
+        "path": "./syntaxes/mtrgen.scala.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.scala": "scala",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-julia",
+        "scopeName": "source.mtrgen.julia",
+        "path": "./syntaxes/mtrgen.julia.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.julia": "julia",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-haskell",
+        "scopeName": "source.mtrgen.haskell",
+        "path": "./syntaxes/mtrgen.haskell.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.haskell": "haskell",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-erlang",
+        "scopeName": "source.mtrgen.erlang",
+        "path": "./syntaxes/mtrgen.erlang.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.erlang": "erlang",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-nim",
+        "scopeName": "source.mtrgen.nim",
+        "path": "./syntaxes/mtrgen.nim.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.nim": "nim",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-ocaml",
+        "scopeName": "source.mtrgen.ocaml",
+        "path": "./syntaxes/mtrgen.ocaml.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.ocaml": "ocaml",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-powershell",
+        "scopeName": "source.mtrgen.powershell",
+        "path": "./syntaxes/mtrgen.powershell.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.powershell": "powershell",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
+        "language": "mtrgen-lisp",
+        "scopeName": "source.mtrgen.lisp",
+        "path": "./syntaxes/mtrgen.lisp.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.lisp": "lisp",
+          "source.mtrgen.tag": "mtrgen"
+        }
+      },
+      {
         "language": "mtrgen-solidity",
         "scopeName": "source.mtrgen.solidity",
         "path": "./syntaxes/mtrgen.solidity.tmLanguage.json",
@@ -1039,8 +1384,7 @@
         "scopeName": "mtrgen.injection.php",
         "path": "./syntaxes/mtrgen.php.injection.tmLanguage.json",
         "injectTo": [
-          "text.html.php",
-          "source.php"
+          "source.mtrgen.php"
         ]
       }
     ],
