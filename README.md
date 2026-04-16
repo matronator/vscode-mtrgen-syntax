@@ -1,71 +1,91 @@
-# mtrgen-syntax README
+![logo](.github/image.png)
 
-This is the README for your extension "mtrgen-syntax". After writing up a brief description, we recommend including the following sections.
+# MTRGen templates support - Syntax Highlighting and File Creation
+
+This extension provides syntax highlighting to template files for [MTRGen](https://mtrgen.matronator.cz) ([matronator/mtrgen-js](https://github.com/matronator/mtrgen-js)) templates. It also provides a command to create files from MTRGen templates.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Syntax highlighting for MTRGen templates
+- Snippets for MTRGen templates
+- File creation from MTRGen templates
+- Command to create files from MTRGen templates
 
-For example if there is an image subfolder under your extension project workspace:
+## Create files from MTRGen templates
 
-\!\[feature X\]\(images/feature-x.png\)
+This extension adds a button to the file explorer and a coresponding command to create files from MTRGen templates. Just run the command `MTRGen: Create File from MTRGen Template` and select a template from the list. If you have no MTRGen templates, the extension will create a `.mtrgen` folder in your project root and prompt you to create a new template.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Snippets
 
-## Requirements
+The extension provides common snippets for MTRGen templates. The following snippets are available:
+REDřwrtqwcznrzkibu n'mtew
+| Snippet                 | Description                                          | Example output                                                                                      |
+|-------------------------|------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `header`, `---`, `mtr`  | Creates MTRGen header block                          |  <pre>--- MTRGEN --- <br> name: foo <br> filename: bar <br> path: baz<br> --- /MTRGEN ---</pre>                |
+| `if`                    | Creates an `if` statement block                      |  <pre><% if true %> <br> ... <br> <% endif %></pre>                                                            |
+| `ifelseif`, `ifei`      | `if` statement block with `elseif` block             |  <pre><% if true %> <br> ... <br> <% elseif false %> <br> ... <br> <% endif %></pre>                           |
+| `ifelse`, `ife`         | `if` statement block with an `else` block            |  <pre><% if true %> <br> ... <br> <% else %> <br> ... <br> <% endif %></pre>                                   |
+| `ifelseifelse`, `ifeie` | `if` statement block with `elseif` and `else` blocks |  <pre><% if true %> <br> ... <br> <% elseif false %> <br> ... <br> <% else %> <br> ... <br> <% endif %></pre>  |
+| `else`                  | `else` block                                         |  <pre><% else %> <br> ... <br> <% endif %></pre>                                                               |
+| `elseif`, `elif`        | `elseif` block                                       |  <pre><% elseif false %> <br> ... <br> <% endif %></pre>                                                       |
+| `comment`, `#`, `//`    | Comment block                                        |  <pre><# This is a comment #></pre>                                                                            |
+| `for`                   | `for` loop block                                     |  <pre><% for item in items %> <br> ... <br> <% endfor %></pre>                                                 |
+| `first`                 | `first` block                                        |  <pre><% first %> <br> ... <br> <% endfirst %></pre>                                                           |
+| `last`                  | `last` block                                         |  <pre><% last %> <br> ... <br> <% endlast %></pre>                                                             |
+| `sep`                   | `sep` block                                          |  <pre><% sep %> <br> ... <br> <% endsep %></pre>                                                               |
+| `empty`                 | `empty` block                                        |  <% empty %> <br> ... <br> <% endempty %>                                                           |
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Supported languages
 
-## Extension Settings
+This extension adds language support for these languages natively or with support from third-party extensions:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- C
+- C++
+- C#
+- Clarity
+- CSS
+- Dart
+- Dockerfile
+- Elixir
+- Elm
+- Erlang
+- Gleam
+- Go
+- Haskell
+- Haxe
+- HTML
+- Java
+- JavaScript (including React)
+- JSON
+- Julia
+- KDL
+- Kotlin
+- Less
+- Lisp
+- Lua
+- Markdown
+- Nim
+- Objective-C
+- OCaml
+- Odin
+- Perl
+- PHP
+- PowerShell
+- Python
+- Ruby
+- Rust
+- Scala
+- SCSS
+- Shellscript
+- Solidity
+- Swift
+- Terraform
+- TOML
+- TypeScript (including React)
+- XML
+- YAML
+- Zig
 
-For example:
+## License
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension is released under the [MIT License](LICENSE).

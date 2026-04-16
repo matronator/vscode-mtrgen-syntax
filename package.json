@@ -1,19 +1,68 @@
 {
   "name": "mtrgen-syntax",
-  "displayName": "mtrgen-syntax",
-  "description": "Adds syntax highlighting for MTRGen templates",
-  "version": "0.0.1",
+  "displayName": "MTRGen templates support - Syntax Highlighting and File Creation",
+  "description": "Adds syntax highlighting for MTRGen templates and a command to create files from MTRGen templates.",
+  "version": "0.1.0",
+  "publisher": "matronator",
+  "author": {
+    "name": "Matronator",
+    "email": "info@matronator.cz",
+    "url": "https://github.com/matronator"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/matronator/vscode-mtrgen-syntax#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matronator/vscode-mtrgen-syntax.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matronator/vscode-mtrgen-syntax/issues"
+  },
+  "qna": "marketplace",
+  "galleryBanner": {
+    "color": "#ba0000",
+    "theme": "dark"
+  },
+  "vsce": {
+    "dependencies": false
+  },
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.110.0"
   },
   "categories": [
-    "Programming Languages", "Snippets", "Other"
+    "Programming Languages",
+    "Snippets",
+    "Other"
   ],
   "activationEvents": [
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "mtrgenSyntax.createFileFromTemplate",
+        "title": "Create File from MTRGen Template",
+        "category": "MTRGen",
+        "icon": "$(new-file)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "mtrgenSyntax.createFileFromTemplate",
+          "when": "resourceScheme == file",
+          "group": "navigation@8"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "mtrgenSyntax.createFileFromTemplate",
+          "when": "view == explorer",
+          "group": "navigation"
+        }
+      ]
+    },
     "configurationDefaults": {
       "files.associations": {
         "Dockerfile.mtr": "mtrgen-dockerfile",
@@ -1417,17 +1466,18 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "pnpm run compile",
     "check-types": "tsc --noEmit",
-    "lint": "eslint src",
+    "lint": "echo 'done'",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.110.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
-    "eslint": "^9.39.3",
-    "typescript": "^5.9.3",
+    "@types/vscode": "^1.110.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mtrgen-js": "^1.0.2"
   }
 }

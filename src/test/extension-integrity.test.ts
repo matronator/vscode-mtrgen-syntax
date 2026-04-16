@@ -17,9 +17,28 @@ function resolveProjectRoot(): string {
 
 const extensionDir = resolveProjectRoot();
 const extensionSourcePath = path.join(extensionDir, "src", "extension.ts");
+const packageJsonPath = path.join(extensionDir, "package.json");
 
 test("extension does not reassign VS Code language modes at runtime", () => {
     const source = fs.readFileSync(extensionSourcePath, "utf8");
 
     assert.doesNotMatch(source, /setTextDocumentLanguage/);
+});
+
+test("package contributes the create-from-template command in explorer surfaces", () => {
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8")) as {
+        contributes?: {
+            commands?: Array<{ command?: string }>;
+            menus?: {
+                ["explorer/context"]?: Array<{ command?: string }>;
+                ["view/title"]?: Array<{ command?: string }>;
+            };
+        };
+    };
+
+    const commandId = "mtrgenSyntax.createFileFromTemplate";
+
+    assert.ok(packageJson.contributes?.commands?.some((command) => command.command === commandId));
+    assert.ok(packageJson.contributes?.menus?.["explorer/context"]?.some((item) => item.command === commandId));
+    assert.ok(packageJson.contributes?.menus?.["view/title"]?.some((item) => item.command === commandId));
 });

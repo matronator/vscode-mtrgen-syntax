@@ -153,10 +153,11 @@ test("compound MTR file associations point to dedicated language ids", () => {
 
 test("package pins *.mtr files to the MTRGen language and icon", () => {
     assert.equal(packageJson.contributes.configurationDefaults?.["files.associations"]?.["*.mtr"], "mtrgen");
-    assert.equal(findLanguage("mtrgen")?.icon?.light, "./images/mtrgen-icon.svg");
-    assert.equal(findLanguage("mtrgen-php")?.icon?.light, "./images/mtrgen-icon.svg");
-    assert.equal(findLanguage("mtrgen-typescript")?.icon?.light, "./images/mtrgen-icon.svg");
-    assert.equal(findLanguage("mtrgen-dockerfile")?.icon?.light, "./images/mtrgen-icon.svg");
+    assert.equal(findLanguage("mtrgen")?.icon?.light, "./images/mtrgen-icon-light.svg");
+    assert.equal(findLanguage("mtrgen")?.icon?.dark, "./images/mtrgen-icon-dark.svg");
+    assert.equal(findLanguage("mtrgen-php")?.icon?.light, "./images/mtrgen-icon-light.svg");
+    assert.equal(findLanguage("mtrgen-typescript")?.icon?.light, "./images/mtrgen-icon-light.svg");
+    assert.equal(findLanguage("mtrgen-dockerfile")?.icon?.light, "./images/mtrgen-icon-light.svg");
 });
 
 test("host-aware MTR grammars declare embedded languages", () => {
@@ -220,8 +221,11 @@ test("every contributed grammar file exists and contains valid JSON", () => {
 });
 
 test("the contributed language icon file exists", () => {
-    const iconPath = path.join(extensionDir, "images", "mtrgen-icon.svg");
-    assert.ok(fs.existsSync(iconPath), "Missing language icon file: ./images/mtrgen-icon.svg");
+    const lightIconPath = path.join(extensionDir, "images", "mtrgen-icon-light.svg");
+    const darkIconPath = path.join(extensionDir, "images", "mtrgen-icon-dark.svg");
+
+    assert.ok(fs.existsSync(lightIconPath), "Missing language icon file: ./images/mtrgen-icon-light.svg");
+    assert.ok(fs.existsSync(darkIconPath), "Missing language icon file: ./images/mtrgen-icon-dark.svg");
 });
 
 test("generated grammars do not include legacy loop block syntax", () => {
