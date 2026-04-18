@@ -1,4 +1,7 @@
 {
+  "comments": {
+    "blockComment": ["<#", "#>"]
+  },
   "brackets": [
     ["<%", "%>"],
     ["<#", "#>"],
@@ -7,34 +10,14 @@
     ["(", ")"]
   ],
   "autoClosingPairs": [
-    {
-      "open": "<%",
-      "close": "%>"
-    },
-    {
-      "open": "<#",
-      "close": "#>"
-    },
-    {
-      "open": "{",
-      "close": "}"
-    },
-    {
-      "open": "[",
-      "close": "]"
-    },
-    {
-      "open": "(",
-      "close": ")"
-    },
-    {
-      "open": "\"",
-      "close": "\""
-    },
-    {
-      "open": "'",
-      "close": "'"
-    }
+    { "open": "<%", "close": "%>" },
+    { "open": "<#", "close": "#>" },
+    { "open": "{", "close": "}" },
+    { "open": "[", "close": "]" },
+    { "open": "(", "close": ")" },
+    { "open": "\"", "close": "\"", "notIn": ["string"] },
+    { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "`", "close": "`", "notIn": ["string", "comment"] }
   ],
   "surroundingPairs": [
     ["<%", "%>"],
@@ -44,5 +27,11 @@
     ["(", ")"],
     ["\"", "\""],
     ["'", "'"]
-  ]
+  ],
+  "folding": {
+    "markers": {
+      "start": "<%\\s*(?:\\b(?:else|first|last|sep|empty)|(?:else)?if\\s*.+|for\\s*[A-z0-9_]+?\\s*of\\s*\\$[A-z0-9_]+?)\\s*%>",
+      "end": "<%\\s*\\bend(?:first|last|sep|empty|if|for)\\s*%>"
+    }
+  }
 }

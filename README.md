@@ -2,6 +2,13 @@
 
 # MTRGen templates support - Syntax Highlighting and File Creation
 
+[![GitHub issues](https://badgen.net/static/license/MIT/blue)](https://github.com/matronator/vscode-mtrgen-syntax/issues)
+![GitHub: open issues](https://badgen.net/github/open-issues/matronator/vscode-mtrgen-syntax)
+![GitHub: stars](https://badgen.net/github/stars/matronator/vscode-mtrgen-syntax)
+![installs](https://badgen.net/vs-marketplace/i/matronator.mtrgen-syntax)
+![downloads](https://badgen.net/vs-marketplace/d/matronator.mtrgen-syntax)
+![rating](https://badgen.net/vs-marketplace/rating/matronator.mtrgen-syntax)
+
 This extension provides syntax highlighting to template files for [MTRGen](https://mtrgen.matronator.cz) ([matronator/mtrgen-js](https://github.com/matronator/mtrgen-js)) templates. It also provides a command to create files from MTRGen templates.
 
 ## Features

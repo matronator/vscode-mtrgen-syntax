@@ -1,13 +1,13 @@
 {
   "name": "mtrgen-syntax",
-  "displayName": "MTRGen templates support - Syntax Highlighting and File Creation",
+  "displayName": "MTRGen Templates Support - Syntax Highlighting, File Creation and more...",
   "description": "Adds syntax highlighting for MTRGen templates and a command to create files from MTRGen templates.",
-  "version": "0.1.0",
-  "publisher": "matronator",
+  "version": "0.1.1",
+  "publisher": "Matronator",
   "author": {
     "name": "Matronator",
     "email": "info@matronator.cz",
-    "url": "https://github.com/matronator"
+    "url": "https://matronator.cz"
   },
   "license": "MIT",
   "homepage": "https://github.com/matronator/vscode-mtrgen-syntax#readme",
@@ -20,12 +20,10 @@
   },
   "qna": "marketplace",
   "galleryBanner": {
-    "color": "#ba0000",
+    "color": "#990000",
     "theme": "dark"
   },
-  "vsce": {
-    "dependencies": false
-  },
+  "icon": "icon-256.png",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -36,6 +34,27 @@
   ],
   "activationEvents": [
     "onStartupFinished"
+  ],
+  "sponsor": {
+    "url": "https://github.com/sponsors/matronator"
+  },
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/bePatron?u=34136375"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.com/paypalme/matronator"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/matronator"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/matronator"
+    }
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -1454,7 +1473,11 @@
     "file generator",
     "code generator",
     "boilerplate",
-    "generator"
+    "generator",
+    "snippets",
+    "snippet generator",
+    "live templates",
+    "live snippets"
   ],
   "scripts": {
     "generate:grammars": "node ./scripts/generate-grammars.js",
