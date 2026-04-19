@@ -2,7 +2,7 @@
   "name": "mtrgen-syntax",
   "displayName": "MTRGen Templates Support - Syntax Highlighting, File Creation and more...",
   "description": "Adds syntax highlighting for MTRGen templates and a command to create files from MTRGen templates.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "Matronator",
   "author": {
     "name": "Matronator",
